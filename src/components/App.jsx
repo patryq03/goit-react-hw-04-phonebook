@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
 import Filter from './Filter/Filter';
+import { useEffect, useState } from 'react';
 
 const contactsArray = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -63,7 +64,7 @@ const contactsArray = [
   return (
     <div className="App">
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} />
+      <Form onSubmit={addContact} />
       <h1>Contacts</h1>
       {contacts.length > 0 ? (
         <Filter value={filter} onChangeFilter={changeFilter} />
@@ -71,7 +72,7 @@ const contactsArray = [
         <h3>There is no contacts!<br/> Add contacts through form above.</h3>
       )}
       {contacts.length > 0 && (
-        <ContactList
+        <Contacts
           contacts={visibleContacts}
           onRemoveContact={removeContact}
         />
